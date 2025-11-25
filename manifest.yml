@@ -1,0 +1,63 @@
+modules:
+  macro:
+  - key: historyPro-macro
+    function: historyPro-handler
+    title: HistoryPro
+    description: Displays page version history with custom change tracking
+    resolver:
+      function: historyPro-resolver
+    render: native
+  function:
+    - key: resolver
+      handler: index.handler
+    - key: historyPro-handler
+      handler: index.historyProHandler
+
+    - key: historyPro-resolver
+      handler: index.historyProResolver
+
+    - key: get-page-version
+      handler: index.getPageVersion
+
+    - key: save-entry
+      handler: index.saveEntry
+
+    - key: delete-entry
+      handler: index.deleteEntry
+
+    - key: get-entries
+      handler: index.getEntries
+
+    - key: save-pending-entry
+      handler: index.savePendingEntry
+
+    - key: get-pending-entry
+      handler: index.getPendingEntry
+
+    - key: finalize-pending-entry
+      handler: index.finalizePendingEntry
+
+    - key: clear-pending-entry
+      handler: index.clearPendingEntry
+
+permissions:
+  scopes:
+    # Твои существующие permissions
+    # ...
+
+    # ДОБАВИТЬ для HistoryPro (если еще нет)
+    - read:page:confluence
+    - read:content:confluence
+    - read:content-details:confluence
+    - read:confluence-user
+    - storage:app
+
+resources:
+  - key: main
+    path: static/history-pro/build
+app:
+  runtime:
+    name: nodejs22.x
+    memoryMB: 256
+    architecture: arm64
+  id: ari:cloud:ecosystem::app/9cbb67dd-fb87-4266-935e-a5ff5740e192
