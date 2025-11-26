@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Button, Text, Heading } from '@forge/react';
+import {Table, Button, Text, Heading, DynamicTable} from '@forge/react';
 
 const VersionTable = ({ entries, contentId, onDeleteEntry }) => {
     const openComparisonView = (version, prevVersion) => {
@@ -66,7 +66,7 @@ const VersionTable = ({ entries, contentId, onDeleteEntry }) => {
     return (
         <>
             <Heading size="medium">Version History</Heading>
-            <Table head={head} rows={rows} />
+            <DynamicTable head={head} rows={rows} />
         </>
     );
 };

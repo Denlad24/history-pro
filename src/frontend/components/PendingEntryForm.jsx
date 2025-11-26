@@ -33,16 +33,15 @@ const PendingEntryForm = ({
         }
     }, [pendingEntry]);
 
-    const handleSave = async (e) => {
-        e.preventDefault();
-
-        if (!formData.changelog.trim()) {
+    // ✅ Правильный обработчик для UI Kit Form
+    const handleSave = async (formData) => {
+        if (!formData.changelog || !formData.changelog.trim()) {
             return;
         }
 
         setIsSaving(true);
         try {
-            await onSave(formData.changelog.trim(), formData.task.trim());
+            await onSave(formData.changelog.trim(), formData.task?.trim() || '');
         } finally {
             setIsSaving(false);
         }
@@ -57,8 +56,7 @@ const PendingEntryForm = ({
         <>
             <Heading size="medium">Prepare Next Version Entry</Heading>
             <Text>
-                Fill in the details <strong>before</strong> saving the page.
-                The version and author will be added automatically after save.
+                Fill in the details before saving the page. The version and author will be added automatically after save.
             </Text>
 
             <Form onSubmit={handleSave}>
@@ -66,11 +64,10 @@ const PendingEntryForm = ({
                     <TextArea
                         name="changelog"
                         label="Change Log"
-                        isRequired
+                        isRequired={true}
                         placeholder="Describe what you're about to change..."
                         description="This field is required"
-                        value={formData.changelog}
-                        onChange={(e) => setFormData({ ...formData, changelog: e.target.value })}
+                        defaultValue={formData.changelog}
                     />
 
                     <TextField
@@ -78,8 +75,7 @@ const PendingEntryForm = ({
                         label="Task/Ticket"
                         placeholder="e.g., PROJ-123"
                         description="Optional reference to your task tracker"
-                        value={formData.task}
-                        onChange={(e) => setFormData({ ...formData, task: e.target.value })}
+                        defaultValue={formData.task}
                     />
                 </FormSection>
 
@@ -97,7 +93,7 @@ const PendingEntryForm = ({
                         <Button
                             appearance="primary"
                             type="submit"
-                            isDisabled={isSaving || !formData.changelog.trim()}
+                            isDisabled={isSaving}
                         >
                             {isSaving ? 'Saving...' : hasPendingEntry ? 'Update Entry' : 'Prepare Entry'}
                         </Button>

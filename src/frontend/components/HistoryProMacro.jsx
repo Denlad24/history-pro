@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { Fragment, useProductContext, SectionMessage } from '@forge/react';
-import Toolbar from './Toolbar';
-import VersionTable from './VersionTable';
-import PendingEntryForm from './PendingEntryForm';
-import { useEntries } from '../hooks/useEntries';
-import { usePageVersion } from '../hooks/usePageVersion';
-import { usePendingEntry } from '../hooks/usePendingEntry';
+import Toolbar from './Toolbar';  // ✅ Правильно
+import VersionTable from './VersionTable';  // ✅ Правильно
+import PendingEntryForm from './PendingEntryForm';  // ✅ Правильно
+import { useEntries } from '../hooks/useEntries';  // ✅ Правильно
+import { usePageVersion } from '../hooks/usePageVersion';  // ✅ Правильно
+import { usePendingEntry } from '../hooks/usePendingEntry';  // ✅ Правильно
 
 const HistoryProMacro = () => {
     const context = useProductContext();
