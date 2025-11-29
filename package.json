@@ -1,25 +1,14 @@
 {
-  "name": "confluence-historypro-macro",
-  "version": "1.0.0",
-  "description": "Version history tracking macro for Confluence Cloud with pre-save entry",
-  "main": "src/index.js",
-  "author": "Your Name",
+  "name": "confluence-macro-custom-ui",
+  "version": "1.1.16",
+  "main": "index.js",
   "license": "MIT",
-  "scripts": {
-    "build": "forge build",
-    "deploy": "forge deploy",
-    "install": "forge install",
-    "tunnel": "forge tunnel",
-    "lint": "eslint src/"
+  "private": true,
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-plugin-react-hooks": "^4.6.0"
   },
   "dependencies": {
-    "@forge/api": "^3.0.0",
-    "@forge/bridge": "^3.0.0",
-    "@forge/react": "^10.0.0",
-    "@forge/resolver": "^1.5.0"
-  },
-  "devDependencies": {
-    "@forge/cli": "^6.0.0",
-    "eslint": "^8.0.0"
+    "@forge/resolver": "1.7.1"
   }
 }

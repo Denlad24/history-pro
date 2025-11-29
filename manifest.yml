@@ -1,58 +1,20 @@
 modules:
   macro:
-    - key: historyPro-macro
-      function: main
-      title: HistoryPro
-      description: Displays page version history with custom change tracking
+    - key: history-custom-ui-hello-world
+      resource: main
       resolver:
         function: resolver
-      render: native
-
+      title: history custom UI
+      description: Inserts Hello world!
   function:
-    - key: main
-      handler: index.run
-
     - key: resolver
-      handler: index.resolver
-
-    - key: get-page-version
-      handler: index.getPageVersion
-
-    - key: save-entry
-      handler: index.saveEntry
-
-    - key: delete-entry
-      handler: index.deleteEntry
-
-    - key: get-entries
-      handler: index.getEntries
-
-    - key: save-pending-entry
-      handler: index.savePendingEntry
-
-    - key: get-pending-entry
-      handler: index.getPendingEntry
-
-    - key: finalize-pending-entry
-      handler: index.finalizePendingEntry
-
-    - key: clear-pending-entry
-      handler: index.clearPendingEntry
-
+      handler: index.handler
 resources:
-  - key: run
-    path: src/frontend/index.js
+  - key: main
+    path: static/hello-world/build
 app:
   runtime:
     name: nodejs22.x
     memoryMB: 256
     architecture: arm64
-  id: ari:cloud:ecosystem::app/746307e6-5515-41bc-aa3a-82798c4d8506
-
-permissions:
-  scopes:
-    - read:page:confluence
-    - read:content:confluence
-    - read:content-details:confluence
-    - read:confluence-user
-    - storage:app
+  id: ari:cloud:ecosystem::app/355e20bd-261e-4c22-affc-316a89070c3e
